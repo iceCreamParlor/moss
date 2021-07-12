@@ -4,19 +4,18 @@ import io from "socket.io-client";
 
 export const Moss = () => {
   const [room, setRoom] = useState("1");
+  const [socket, setSocket] = useState(io.connect(socketUri));
 
   useEffect(() => {
     console.log("useEffect");
     // socket.on(`${room}.msgToClient`, receiveMessage);
+    socket.on("connect", () => {
+      console.log("connected");
+      const response = join();
+      console.log(response);
+    });
     socket.on(`msgToClient`, receiveMessage);
   }, []);
-
-  const socket = io.connect(socketUri);
-  socket.on("connect", () => {
-    console.log("connected");
-    const response = join();
-    console.log(response);
-  });
 
   const receiveMessage = (message: string) => {
     console.log(message);

@@ -23,12 +23,13 @@ export class SocketGateway {
    **/
   public handleJoin(socket: Socket, data: any) {
     const room = this.getRoom(data);
-    console.log(room);
     this._clients.push({ socket, room });
     socket.join(room);
     socket.to(room).emit("msgToClient", `${room}방에 접속했습니다.`);
     socket.on("msgToServer", (data) => this.handleMsgToServer(socket, data));
     socket.on("disconnect", () => this.handleDisconnect(socket));
+
+    console.log(this._clients.length);
   }
   /**
    * Socket 클라이언트에서 서버로 메세지를 전송했을 때 실행됨
