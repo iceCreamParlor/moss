@@ -1,5 +1,5 @@
 import { MossApp } from "./app";
-import { MossSocket } from "./lib/socket";
+import { SocketGateway } from "./lib/socket";
 
 const { express, socketIo } = MossApp.create();
 
@@ -12,5 +12,5 @@ const server = express.listen(port, () =>
 socketIo.listen(server);
 
 socketIo.on("connection", (socket) => {
-  const mossSocket = new MossSocket(socket);
+  SocketGateway.instance.handleConnect(socket);
 });
