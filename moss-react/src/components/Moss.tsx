@@ -46,17 +46,17 @@ export const Moss = () => {
   };
 
   const handleDot = (e: any) => {
-    setStack(stack.push("."));
+    stack.push(".");
     forceUpdate();
   };
 
   const handleUnderscore = (e: any) => {
-    setStack(stack.push("_"));
+    stack.push("-");
     forceUpdate();
   };
 
   const handleClear = () => {
-    setStack(stack.clear());
+    stack.clear();
     forceUpdate();
   };
 
@@ -72,7 +72,7 @@ export const Moss = () => {
       <button onClick={handleDot}>.</button>
       <br />
       <br />
-      <button onClick={handleUnderscore}>_</button>
+      <button onClick={handleUnderscore}>-</button>
       <br />
       <br />
       <button onClick={handleClear}>clear</button>

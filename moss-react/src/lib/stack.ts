@@ -3,7 +3,6 @@ export class Stack<T> {
 
   public push(element: T) {
     this._list.push(element);
-    return this;
   }
   public pop(): T {
     const length = this.size;
@@ -16,7 +15,6 @@ export class Stack<T> {
   }
   public clear() {
     this._list = [];
-    return this;
   }
   public toString(): string {
     return this._list.join("");
