@@ -17,6 +17,7 @@ export class MossApp {
       cors: {
         origin: "*",
       },
+      transports: ["websocket"],
     });
 
     return {

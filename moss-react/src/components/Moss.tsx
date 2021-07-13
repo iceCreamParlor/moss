@@ -11,7 +11,11 @@ function useForceUpdate() {
 
 export const Moss = () => {
   const [room, setRoom] = useState("1");
-  const [socket, setSocket] = useState(io.connect(socketUri));
+  const [socket, setSocket] = useState(
+    io.connect(socketUri, {
+      transports: ["websocket"],
+    })
+  );
   const [stack, setStack] = useState(new Stack<string>());
   const [msg, setMsg] = useState("");
   const forceUpdate = useForceUpdate();
